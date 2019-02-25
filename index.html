@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="x5-page-mode" content="app" />
+    <title>Musica</title>
+  </head>
+  <script>
+    function wxShare (params) {
+      console.log(1)
+    }
+    function getUrlParam (params) {
+      console.log(11)
+    }
+  </script>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script>
+    var singerName = ''
+    var shareName = ''
+    // document.addEventListener('touchmove', function (e) { e.preventDefault() }, false)
+    document.addEventListener('DOMContentLoaded', function () {
+      let audio = document.getElementById('music')
+      function version() {
+        var u = navigator.userAgent
+        // var app = navigator.appVersion
+        return {
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+          android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
+          iPhone: u.indexOf('iPhone') > -1,
+          iPad: u.indexOf('iPad') > -1
+        }
+      }
+      let browser = {}
+      browser.versions = version()
+      if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+        document.addEventListener('WeixinJSBridgeReady', function () {
+          audio.play()
+        }, false)
+      }
+      // if (typeof WeixinJSBridge === 'object' && typeof WeixinJSBridge.invoke === 'function') {
+      //   audio.play()
+      // } else {
+      //   if (document.addEventListener) {
+      //     document.addEventListener('WeixinJSBridgeReady', function () {
+      //       audio.play()
+      //     }, false)
+      //   } else if (document.attachEvent) {
+      //     document.attachEvent('WeixinJSBridgeReady', function () {
+      //       audio.play()
+      //     })
+      //     document.attachEvent('onWeixinJSBridgeReady', function () {
+      //       audio.play()
+      //     })
+      //   }
+      // }
+    })
+  </script>
+</html>
